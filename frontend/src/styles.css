@@ -1,0 +1,58 @@
+:root{--bg:#f6f7f4;--card:#fff;--ink:#1d2a24;--mut:#66736c;--line:#dfe4de;--brand:#1f7a4d;--brand-d:#165a39;--red:#c0392b;--warn:#fff3cd}
+@media (prefers-color-scheme:dark){:root{--bg:#141a17;--card:#1d2621;--ink:#e8efe9;--mut:#93a39a;--line:#2f3b34;--warn:#4a3f14}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:16px}
+main{max-width:1200px;margin:0 auto;padding:16px}
+h2{margin:8px 0}h3{margin:16px 0 8px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--brand);color:#fff;padding:8px 16px;position:sticky;top:0;z-index:5}
+.top nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+.top a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:6px}
+.top a.active{background:var(--brand-d)}
+.top .btn.ghost{color:#fff;border-color:#fff8}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+.btn{background:var(--brand);color:#fff;border:1px solid var(--brand);border-radius:8px;padding:10px 16px;font-size:1rem;cursor:pointer}
+.btn:hover{background:var(--brand-d)}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.danger{background:var(--red);border-color:var(--red)}
+.btn.big{padding:14px 20px;font-size:1.1rem}.btn.sm{padding:6px 10px;font-size:.9rem}.btn.full{width:100%;margin-top:12px}
+input,select{padding:10px;border:1px solid var(--line);border-radius:8px;font-size:1rem;background:var(--card);color:var(--ink);max-width:100%}
+:focus-visible{outline:3px solid #2a9d6a;outline-offset:1px}
+label{display:flex;flex-direction:column;gap:4px;margin:8px 0;color:var(--mut);font-size:.9rem}
+label.inline{flex-direction:row;align-items:center;gap:6px;margin:0}
+.big-input{width:100%;padding:14px;font-size:1.2rem}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0;justify-content:space-between}
+.row h2{margin:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--mut);font-weight:600;font-size:.9rem}
+.r{text-align:right}.c{text-align:center}.off{opacity:.55}.low{color:var(--red);font-weight:700}
+.acts{white-space:nowrap;display:flex;gap:6px}
+.err{background:#fde8e6;color:#8a1f14;border-radius:8px;padding:10px;margin:8px 0}
+.warn{background:var(--warn);border-radius:8px;padding:10px;margin:8px 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stats .card b{display:block;font-size:1.6rem;margin-top:4px}
+.login{min-height:100vh;display:grid;place-items:center;padding:16px}.login .card{width:100%;max-width:380px}
+.pos{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:12px}
+.tile{display:flex;flex-direction:column;gap:4px;text-align:left;padding:12px;min-height:90px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;cursor:pointer;font-size:1rem}
+.tile:hover:not(:disabled){border-color:var(--brand)}.tile:disabled{opacity:.45}
+.tile span{color:var(--brand);font-weight:700}.tile small{color:var(--mut)}
+.cart{align-self:start;position:sticky;top:70px}
+.qty{width:64px}.total{font-size:1.3rem;margin:12px 0;display:flex;justify-content:space-between}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.modal-bg{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:12px;z-index:20;overflow:auto}
+.modal{background:var(--card);border-radius:12px;padding:20px;width:100%;max-width:440px;max-height:95vh;overflow:auto}
+.receipt{font-family:"Courier New",monospace;font-size:14px}
+.receipt h3,.receipt p{text-align:center}.receipt table{background:transparent}.receipt td{padding:4px 0;border:0}.receipt .tot td{border-top:1px dashed currentColor;font-weight:700}
+@media (max-width:800px){.pos{grid-template-columns:1fr}.cart{position:static}.grid2{grid-template-columns:1fr}}
+/* Print only the receipt (works for normal printers and 58/80mm thermal printers) */
+@media print{
+  body{background:#fff;color:#000}
+  body *{visibility:hidden}
+  .receipt,.receipt *{visibility:visible}
+  .receipt{position:absolute;left:0;top:0;width:100%;color:#000}
+  .modal-bg{position:static;background:none}.modal{box-shadow:none;max-width:none}
+  .no-print{display:none!important}
+}
